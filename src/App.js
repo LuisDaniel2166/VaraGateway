@@ -33,6 +33,7 @@ import { NetworkId, Widgets } from "./data/widgets";
 import { useEthersProviderContext } from "./data/web3";
 import SignInPage from "./pages/SignInPage";
 import { isValidAttribute } from "dompurify";
+import { ApiProvider, AccountProvider, useAccount as useVaraAccount, useApi } from "@gear-js/react-hooks";
 
 export const refreshAllowanceObj = {};
 const documentationHref = "https://social.near-docs.io/";
@@ -168,27 +169,31 @@ function App(props) {
 
   return (
     <div className="App">
-      <EthersProviderContext.Provider value={ethersProviderContext}>
-        <Router basename={process.env.PUBLIC_URL}>
-          <Switch>
-            <Route path={"/signin"}>
-              <NavigationWrapper {...passProps} />
-              <SignInPage {...passProps} />
-            </Route>
-            <Route path={"/embed/:widgetSrc*"}>
-              <EmbedPage {...passProps} />
-            </Route>
-            <Route path={"/edit/:widgetSrc*"}>
-              <NavigationWrapper {...passProps} />
-              <EditorPage {...passProps} />
-            </Route>
-            <Route path={"/:widgetSrc*"}>
-              <NavigationWrapper {...passProps} />
-              <ViewPage {...passProps} />
-            </Route>
-          </Switch>
-        </Router>
-      </EthersProviderContext.Provider>
+      <ApiProvider initialArgs={{ endpoint: "wss://testnet.vara.network" }}>
+        <AccountProvider>
+          <EthersProviderContext.Provider value={ethersProviderContext}>
+            <Router basename={process.env.PUBLIC_URL}>
+              <Switch>
+                <Route path={"/signin"}>
+                  <NavigationWrapper {...passProps} />
+                  <SignInPage {...passProps} />
+                </Route>
+                <Route path={"/embed/:widgetSrc*"}>
+                  <EmbedPage {...passProps} />
+                </Route>
+                <Route path={"/edit/:widgetSrc*"}>
+                  <NavigationWrapper {...passProps} />
+                  <EditorPage {...passProps} />
+                </Route>
+                <Route path={"/:widgetSrc*"}>
+                  <NavigationWrapper {...passProps} />
+                  <ViewPage {...passProps} />
+                </Route>
+              </Switch>
+            </Router>
+          </EthersProviderContext.Provider>
+        </AccountProvider>
+      </ApiProvider>
     </div>
   );
 }

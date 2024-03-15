@@ -4,6 +4,8 @@
   "homepage": "/",
   "private": true,
   "dependencies": {
+    "@gear-js/api": "^0.36.7",
+    "@gear-js/react-hooks": "^0.10.3",
     "@monaco-editor/react": "^4.4.6",
     "@near-wallet-selector/core": "^8.9.2",
     "@near-wallet-selector/here-wallet": "^8.9.2",
@@ -15,6 +17,7 @@
     "@near-wallet-selector/neth": "^8.9.2",
     "@near-wallet-selector/nightly": "^8.9.2",
     "@near-wallet-selector/sender": "^8.9.2",
+    "@polkadot/extension-dapp": "^0.46.7",
     "@web3-onboard/core": "^2.20.2",
     "@web3-onboard/injected-wallets": "^2.10.1",
     "@web3-onboard/ledger": "^2.4.6",
