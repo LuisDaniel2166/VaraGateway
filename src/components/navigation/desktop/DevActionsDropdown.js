@@ -11,12 +11,19 @@ const StyledDropdown = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--slate-dark-5);
+    background-color: var(--white-light-1);
     border-radius: 50px;
-    outline: none;
-    border: 0;
+    border-style: solid;
+    border-width: 3px;
+    border-color: var(--slate-vara-1);
     width: 40px;
     height: 40px;
+    margin-right: 5px;
+
+    &:hover{
+      background-color: var(--slate-vara-1);
+      border-color: var(--slate-vara-1);
+    }
 
     &:after {
       display: none;
@@ -30,7 +37,7 @@ const StyledDropdown = styled.div`
       justify-content: space-evenly;
 
       div {
-        background-color: var(--slate-dark-11);
+        background-color: var(--slate-vara-1);
         height: 2px;
         width: 100%;
         border-radius: 30px;
@@ -47,7 +54,7 @@ const StyledDropdown = styled.div`
   }
 
   ul {
-    background-color: var(--slate-dark-5);
+    background-color: var(--slate-vara-1);
     width: 100%;
 
     li {
@@ -56,7 +63,7 @@ const StyledDropdown = styled.div`
 
     button,
     a {
-      color: var(--slate-dark-11);
+      color: white;
       display: flex;
       align-items: center;
       border-radius: 8px;
@@ -78,7 +85,7 @@ const StyledDropdown = styled.div`
       svg {
         margin-right: 7px;
         path {
-          stroke: var(--slate-dark-9);
+          stroke: white;
         }
       }
     }

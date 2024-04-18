@@ -1,5 +1,13 @@
 @import "bootstrap";
 
+// Create your own map
+$custom-colors: (
+  "test": #75FBC7
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 body {
   overflow-y: scroll;
 }

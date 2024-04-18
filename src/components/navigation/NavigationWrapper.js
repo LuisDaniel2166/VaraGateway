@@ -4,7 +4,7 @@ import { MobileNavigation } from "./mobile/MobileNavigation";
 
 export function NavigationWrapper(props) {
   const hideMenu = !!window?.InjectedConfig?.hideMenu;
-
+console.log(window.matchMedia("(min-width: 992px)"))
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 992px)").matches
   );

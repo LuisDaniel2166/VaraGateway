@@ -29,11 +29,12 @@ import {
 } from "near-social-vm";
 import Big from "big.js";
 import { NavigationWrapper } from "./components/navigation/NavigationWrapper";
+import { Footer } from "./components/navigation/Footer";
 import { NetworkId, Widgets } from "./data/widgets";
 import { useEthersProviderContext } from "./data/web3";
 import SignInPage from "./pages/SignInPage";
 import { isValidAttribute } from "dompurify";
-import { ApiProvider, AccountProvider, useAccount as useVaraAccount, useApi } from "@gear-js/react-hooks";
+import { ApiProvider, AccountProvider } from "@gear-js/react-hooks";
 
 export const refreshAllowanceObj = {};
 const documentationHref = "https://social.near-docs.io/";
@@ -177,17 +178,21 @@ function App(props) {
                 <Route path={"/signin"}>
                   <NavigationWrapper {...passProps} />
                   <SignInPage {...passProps} />
+                  <Footer/>
                 </Route>
                 <Route path={"/embed/:widgetSrc*"}>
                   <EmbedPage {...passProps} />
+                  <Footer/>
                 </Route>
                 <Route path={"/edit/:widgetSrc*"}>
                   <NavigationWrapper {...passProps} />
                   <EditorPage {...passProps} />
+                  <Footer/>
                 </Route>
                 <Route path={"/:widgetSrc*"}>
                   <NavigationWrapper {...passProps} />
                   <ViewPage {...passProps} />
+                  <Footer/>
                 </Route>
               </Switch>
             </Router>

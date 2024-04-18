@@ -24,6 +24,9 @@ import {
 import { useHashRouterLegacy } from "../hooks/useHashRouterLegacy";
 import vmTypesDeclaration from "raw-loader!near-social-vm-types";
 import styled from "styled-components";
+import * as GearHooks from '@gear-js/react-hooks'
+import { ProgramMetadata } from "@gear-js/api";
+import { web3FromSource } from "@polkadot/extension-dapp";
 
 const LsKey = "social.near:v01:";
 const EditorLayoutKey = LsKey + "editorLayout:";
@@ -75,6 +78,9 @@ export default function EditorPage(props) {
   const near = useNear();
   const cache = useCache();
   const accountId = useAccountId();
+  // const varaApi = useApi();
+  // const varaAccount2 = useAccount();
+  //console.log(varaAccount)
 
   const [tab, setTab] = useState(Tab.Editor);
   const [layout, setLayoutState] = useState(
@@ -82,7 +88,15 @@ export default function EditorPage(props) {
   );
   const [previewKey, setPreviewKey] = useState("");
 
+  const testVara = `
+  declare namespace vara {
+    const varaAccount: Object = varaAccount2;
+  }
+  `
+
   const monaco = useMonaco();
+  
+  //console.log(vmTypesDeclaration)
 
   useEffect(() => {
     if (monaco) {
@@ -90,6 +104,7 @@ export default function EditorPage(props) {
       monaco.languages.typescript.javascriptDefaults.addExtraLib(
         vmTypesDeclaration
       );
+      console.log(monaco.languages.typescript.javascriptDefaults.getExtraLibs())
     }
   }, [monaco]);
 
@@ -573,7 +588,7 @@ export default function EditorPage(props) {
   `;
 
   return (
-    <div className="container-fluid mt-1">
+    <div className="container-fluid mt-1 mb-3">
       <RenameModal
         key={`rename-modal-${jpath}`}
         show={showRenameModal}
@@ -624,7 +639,7 @@ export default function EditorPage(props) {
           })}
           <Nav.Item>
             <Nav.Link
-              className="text-decoration-none"
+              className="text-decoration-none text-test"
               onClick={() => setShowOpenModal(true)}
             >
               <i className="bi bi-file-earmark-plus"></i> Add
@@ -632,7 +647,7 @@ export default function EditorPage(props) {
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
-              className="text-decoration-none"
+              className="text-decoration-none text-test"
               onClick={() => closeCommitted(path, allSaved)}
             >
               <i className="bi bi-x-lg"></i> Close unchanged

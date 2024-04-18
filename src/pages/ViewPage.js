@@ -16,6 +16,7 @@ export default function ViewPage(props) {
     widgetSrc ||
     window?.InjectedConfig?.defaultWidget ||
     props.widgets.default;
+    console.log(src)
   const showMenu = !window?.InjectedConfig?.hideMenu;
   const setWidgetSrc = props.setWidgetSrc;
   const viewSourceWidget = props.widgets.viewSource;
