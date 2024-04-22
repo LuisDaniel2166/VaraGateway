@@ -12,7 +12,7 @@ const StyledNavigationButton = styled.div`
     border-width: 1px;
     border-color: var(--slate-vara-1);
     font-weight: var(--font-weight-bold);
-    height: 40px;
+    height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;

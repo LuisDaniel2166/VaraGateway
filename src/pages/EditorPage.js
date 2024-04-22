@@ -551,7 +551,7 @@ export default function EditorPage(props) {
 
   const commitButton = (
     <CommitButton
-      className="btn btn-outline-primary"
+      className="btn btn-outline-success"
       disabled={!widgetName}
       near={near}
       data={{
@@ -588,6 +588,33 @@ export default function EditorPage(props) {
   `;
 
   return (
+    <>
+    <style type="text/css">
+    {`
+    .nav-tabs .nav-link {
+      background-color: white !important;
+      color: black !important;
+      font-weight: 600;
+    }
+    
+    .nav-tabs .nav-link.active {
+      background-color: #75FBC7 !important;
+      color: black !important;
+      font-weight: 600;
+    }
+    .nav-item .nav-link {
+      background-color: white !important;
+      color: black !important;
+      font-weight: 600;
+    }
+    
+    .nav-item .nav-link.active {
+      background-color: #75FBC7 !important;
+      color: black !important;
+      font-weight: 600;
+    }
+    `}
+    </style>
     <div className="container-fluid mt-1 mb-3">
       <RenameModal
         key={`rename-modal-${jpath}`}
@@ -670,7 +697,7 @@ export default function EditorPage(props) {
                       }
                     >
                       <button
-                        className="btn btn-outline-primary"
+                        className="btn btn-outline-success"
                         onClick={(e) => {
                           e.preventDefault();
                           loadFile(widgetPath);
@@ -732,7 +759,7 @@ export default function EditorPage(props) {
               <ul className={`nav nav-tabs mb-2`}>
                 <li className="nav-item">
                   <button
-                    className={`nav-link ${tab === Tab.Editor ? "active" : ""}`}
+                    className={`nav-link text-success ${tab === Tab.Editor ? "active text-dark" : ""}`}
                     aria-current="page"
                     onClick={() => setTab(Tab.Editor)}
                   >
@@ -741,7 +768,7 @@ export default function EditorPage(props) {
                 </li>
                 <li className="nav-item">
                   <button
-                    className={`nav-link ${tab === Tab.Props ? "active" : ""}`}
+                    className={`nav-link text-success ${tab === Tab.Props ? "active text-dark" : ""}`}
                     aria-current="page"
                     onClick={() => setTab(Tab.Props)}
                   >
@@ -751,8 +778,8 @@ export default function EditorPage(props) {
                 {props.widgets.widgetMetadataEditor && (
                   <li className="nav-item">
                     <button
-                      className={`nav-link ${
-                        tab === Tab.Metadata ? "active" : ""
+                      className={`nav-link text-success ${
+                        tab === Tab.Metadata ? "active text-dark" : ""
                       }`}
                       aria-current="page"
                       onClick={() => setTab(Tab.Metadata)}
@@ -803,7 +830,7 @@ export default function EditorPage(props) {
                   </div>
                   <Buttons className="mb-3 d-flex gap-2 flex-wrap">
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-success"
                       onClick={() => {
                         renderPreview(code);
                         if (layout === Layout.Tabs) {
@@ -816,7 +843,7 @@ export default function EditorPage(props) {
                     {!path?.unnamed && commitButton}
                     <button
                       className={`btn ${
-                        path?.unnamed ? "btn-primary" : "btn-outline-secondary"
+                        path?.unnamed ? "btn-success" : "btn-outline-secondary"
                       }`}
                       onClick={() => {
                         setShowRenameModal(true);
@@ -964,5 +991,6 @@ export default function EditorPage(props) {
         </div>
       </div>
     </div>
+    </>
   );
 }
