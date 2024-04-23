@@ -93,6 +93,7 @@ export function DesktopNavigation(props) {
       .read({ programId: programIDFT,payload:"" }, metadata)
       .then((result) => {
         console.log(result.toJSON())
+        alert(result.toJSON())
       })
       .catch((err) => console.log("error",err));
   }
@@ -123,6 +124,7 @@ export function DesktopNavigation(props) {
               if (status.type === "Finalized") {
                 console.log("finalizada")
                 //alert.success(status.type);
+                alert("transaccion ejecutada ")
               }
             }
           }
@@ -154,8 +156,9 @@ export function DesktopNavigation(props) {
             <ArrowUpRight />
           </NavigationButton>
           <Button onClick={()=>tryLogin()}>Login</Button>
-          <Button onClick={()=>testReadState()}>ReadState</Button>
-          <Button onClick={()=>testSignTransaction()}>SignTransaction</Button> */}
+           */}
+          <Button variant="success" onClick={()=>testReadState()}>ReadState</Button>
+          <Button variant="success" onClick={()=>testSignTransaction()}>SignTransaction</Button>
         </div>
         <div className="user-section">
           <DevActionsDropdown {...props} />
