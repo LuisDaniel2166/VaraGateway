@@ -4,6 +4,8 @@ A framework for reusable components to render and modify SocialDB by Near Social
 
 ## Setup & Development
 
+Use NodeJS v20^
+
 Initialize repo:
 
 ```
